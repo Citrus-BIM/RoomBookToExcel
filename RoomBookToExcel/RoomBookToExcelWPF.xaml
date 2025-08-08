@@ -1,30 +1,72 @@
 ﻿<Window x:Class="RoomBookToExcel.RoomBookToExcelWPF"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:RoomBookToExcel"
-             mc:Ignorable="d" 
-             Title="RoomBook в Excel" Height="260" Width="320" 
-             MinHeight="260" MinWidth="320" MaxHeight="260" MaxWidth="320"
-             WindowStyle="SingleBorderWindow" ResizeMode="NoResize" Icon="Resources/citrus.ico" WindowStartupLocation="CenterScreen" KeyDown="RoomBookToExcelWPF_KeyDown">
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:RoomBookToExcel"
+        mc:Ignorable="d"
+        Title="RoomBook в Excel"
+        Height="250" Width="350"
+        MinHeight="250" MinWidth="350"
+        MaxHeight="250" MaxWidth="350"
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="NoResize"
+        Icon="Resources/citrus.ico"
+        WindowStartupLocation="CenterScreen"
+        KeyDown="RoomBookToExcelWPF_KeyDown">
+
     <Grid>
         <GroupBox x:Name="groupBox_ExportOption" Header="Вариант экспорта:" Margin="10,10,10,50">
-            <Grid>
+            <Grid Margin="0,4,0,0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="35*"/>
-                    <RowDefinition Height="35*"/>
-                    <RowDefinition Height="35*"/>
-                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <!-- новая строка -->
                 </Grid.RowDefinitions>
-                <RadioButton x:Name="rbt_FinishingForEachRoom" Content="Отделка по каждому помещению" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" IsChecked="True"/>
-                <RadioButton x:Name="rbt_FloorFinishByCombinationInRoom" Content="Отделка пола по сочетанию в помещении" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" Grid.Row="1"/>
-                <RadioButton x:Name="rbt_WallFinishByCombinationInRoom" Content="Отделка стен по сочетанию в помещении" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" Grid.Row="2"/>
-                <RadioButton x:Name="rbt_CeilingFinishByCombinationInRoom" Content="Потолки по сочетанию в помещении" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" Grid.Row="3"/>
+
+                <RadioButton x:Name="rbt_FinishingForEachRoom"
+                             Content="Отделка по каждому помещению"
+                             HorizontalAlignment="Left" Margin="0,5,0,5"
+                             VerticalAlignment="Center" IsChecked="True"/>
+
+                <RadioButton x:Name="rbt_FloorFinishByCombinationInRoom"
+                             Grid.Row="1"
+                             Content="Отделка пола по сочетанию в помещении"
+                             HorizontalAlignment="Left" Margin="0,5,0,5"
+                             VerticalAlignment="Center"/>
+
+                <RadioButton x:Name="rbt_WallFinishByCombinationInRoom"
+                             Grid.Row="2"
+                             Content="Отделка стен по сочетанию в помещении"
+                             HorizontalAlignment="Left" Margin="0,5,0,5"
+                             VerticalAlignment="Center"/>
+
+                <RadioButton x:Name="rbt_CeilingFinishByCombinationInRoom"
+                             Grid.Row="3"
+                             Content="Потолки по сочетанию в помещении"
+                             HorizontalAlignment="Left" Margin="0,5,0,5"
+                             VerticalAlignment="Center"/>
+
+                <!-- НОВАЯ опция -->
+                <RadioButton x:Name="rbt_WallFinishByCombinationWithCeiling"
+                             Grid.Row="4"
+                             Content="Отделка стен с учётом сочетания с потолками"
+                             HorizontalAlignment="Left" Margin="0,5,0,5"
+                             VerticalAlignment="Center"/>
             </Grid>
         </GroupBox>
-        
-        <Button x:Name="btn_Ok" Content="Ок" HorizontalAlignment="Right" Margin="0,0,125,10" VerticalAlignment="Bottom" Width="100" Height="25" Click="btn_Ok_Click"/>
-        <Button x:Name="btn_Cancel" Content="Отмена" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="100" Height="25" Click="btn_Cancel_Click"/>
+
+        <Button x:Name="btn_Ok" Content="Ок"
+                HorizontalAlignment="Right" Margin="0,0,125,10"
+                VerticalAlignment="Bottom" Width="100" Height="25"
+                Click="btn_Ok_Click"/>
+
+        <Button x:Name="btn_Cancel" Content="Отмена"
+                HorizontalAlignment="Right" Margin="0,0,10,10"
+                VerticalAlignment="Bottom" Width="100" Height="25"
+                Click="btn_Cancel_Click"/>
     </Grid>
 </Window>

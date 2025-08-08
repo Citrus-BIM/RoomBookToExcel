@@ -63,7 +63,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\R2023\</OutputPath>
+    <OutputPath>..\</OutputPath>
     <DefineConstants>DEBUG;R2023</DefineConstants>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <AssemblyName>$(AssemblyName)</AssemblyName>
@@ -81,6 +81,10 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -98,6 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlphanumComparatorFastString.cs" />
+    <Compile Include="ElementTypeIdComparer.cs" />
     <Compile Include="ItemCeilingFinishByRoom.cs" />
     <Compile Include="ItemCeilingFinishByRoomComparer.cs" />
     <Compile Include="ItemCeilingFinishByRoomExcelString.cs" />
@@ -108,6 +113,8 @@
     <Compile Include="ItemWallFinishByRoom.cs" />
     <Compile Include="ItemWallFinishByRoomComparer.cs" />
     <Compile Include="ItemWallFinishByRoomExcelString.cs" />
+    <Compile Include="ItemWallFinishByRoomWithCeil.cs" />
+    <Compile Include="ItemWallFinishByRoomWithCeilComparer.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -121,6 +128,7 @@
     <Compile Include="RoomBookToExcelWPF.xaml.cs">
       <DependentUpon>RoomBookToExcelWPF.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ItemWallFinishByRoomWithCeilExcelRow.cs" />
   </ItemGroup>
   <Choose>
     <When Condition=" '$(Configuration)'=='R2019' ">
@@ -203,7 +211,7 @@
         </Reference>
       </ItemGroup>
     </When>
-	<When Condition=" '$(Configuration)'=='R2024' ">
+    <When Condition=" '$(Configuration)'=='R2024' ">
       <ItemGroup>
         <Reference Include="RevitAPI">
           <HintPath>C:\Program Files\Autodesk\Revit 2024\RevitAPI.dll</HintPath>
@@ -222,11 +230,6 @@
   </Choose>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="EPPlus">
-      <Version>6.1.3</Version>
-    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="RoomBookToExcelProgressBarWPF.xaml">
