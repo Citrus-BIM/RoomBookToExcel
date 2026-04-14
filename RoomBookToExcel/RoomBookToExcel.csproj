@@ -1,20 +1,31 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <AssemblyName>RoomBookToExcel</AssemblyName>
-	<RootNamespace>RoomBookToExcel</RootNamespace>
-	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-	  <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>RoomBookToExcel</RootNamespace>
+    <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
-  	<ItemGroup>
-		<Resource Include="Resources\citrus.ico" />
-	</ItemGroup>
-	<!-- Revit 2019-2024 -->
-	<ItemGroup Condition="'$(TargetFramework)' == 'net48'">
-		<PackageReference Include="DocumentFormat.OpenXml" Version="2.20.0" />
-	</ItemGroup>
 
-	<!-- Revit 2025+ -->
-	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-windows'">
-		<PackageReference Include="DocumentFormat.OpenXml" Version="3.2.0" />
-	</ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\citrus.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Properties\Resources.resx" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net48'">
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.20.0" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0-windows'">
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-windows'">
+    <PackageReference Include="DocumentFormat.OpenXml" Version="3.2.0" />
+  </ItemGroup>
 </Project>
