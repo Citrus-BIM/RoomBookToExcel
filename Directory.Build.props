@@ -40,11 +40,12 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)' == 'R2027'">
         <RevitVersion>2027</RevitVersion>
-        <TargetFramework>net8.0-windows</TargetFramework>
+        <TargetFramework>net10.0-windows</TargetFramework>
     </PropertyGroup>
 
     <!-- OutputPath и DefineConstants -->
     <PropertyGroup Condition="'$(RevitVersion)' != ''">
+        <RevitApiPackageVersion Condition="'$(RevitApiPackageVersion)' == ''">$(RevitVersion).*</RevitApiPackageVersion>
         <OutputPath>bin\$(Configuration)\</OutputPath>
         <DefineConstants>DEBUG;$(Configuration);REVIT_$(RevitVersion)</DefineConstants>
     </PropertyGroup>
@@ -67,7 +68,7 @@
         <PackageReference
                 Condition="'$(Configuration)' == 'R$(RevitVersion)'"
                 Include="Revit_All_Main_Versions_API_x64"
-                Version="$(RevitVersion).*"
+                Version="$(RevitApiPackageVersion)"
                 IncludeAssets="build; compile"/>
     </ItemGroup>
 
@@ -81,4 +82,13 @@
         <Reference Include="System.Windows.Forms"/>
         <Reference Include="WindowsBase"/>
     </ItemGroup>
+    <PropertyGroup Condition="'$(RevitVersion)' == '2025'">
+        <RevitApiPackageVersion>2025.0.0</RevitApiPackageVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(RevitVersion)' == '2026'">
+        <RevitApiPackageVersion>2026.0.0</RevitApiPackageVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(RevitVersion)' == '2027'">
+        <RevitApiPackageVersion>2027.0.0</RevitApiPackageVersion>
+    </PropertyGroup>
 </Project>
